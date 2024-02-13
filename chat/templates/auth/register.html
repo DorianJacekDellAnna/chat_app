@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Register</h1>
+{% if pwdDontMatch %}
+<p style="color: red">Passwords don't match!</p>
+{% endif %}
+<form action="/register/" method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="redirect" value="{{ redirect }}" />
+  <div>
+    <input
+      class="mdl-textfield__input"
+      placeholder="Your Username"
+      name="username"
+      type="text"
+      id="username"
+      required
+    />
+  </div>
+  <div>
+    <input
+      class="mdl-textfield__input"
+      placeholder="Password"
+      name="pwd"
+      type="password"
+      id="pwd"
+      required
+    />
+  </div>
+  <div>
+    <input
+      class="mdl-textfield__input"
+      placeholder="Confirm Password"
+      name="confirmPwd"
+      type="password"
+      id="pwd"
+      required
+    />
+  </div>
+  <div>
+    <button
+      class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+    >
+      Sign Up
+    </button>
+  </div>
+</form>
+
+{% endblock %}
